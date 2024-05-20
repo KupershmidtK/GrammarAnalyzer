@@ -4,23 +4,23 @@ import java.util.List;
 import java.util.Map;
 
 public class Data implements IData {
-    private final List<Character> axis = List.of('S', 'B', 'G', 'b', '(', 'a', ')');
+    private final List<Character> axis = List.of('S', 'B', 'A', 'b', 'a');
 
     private final List<List<Rel>> relation = List.of(
-        List.of(Rel.None,Rel.None,Rel.None,Rel.None,Rel.None,Rel.None,Rel.None),
-        List.of(Rel.None,Rel.None,Rel.None,Rel.Eq,Rel.None,Rel.Eq,Rel.None),
-        List.of(Rel.None,Rel.None,Rel.None,Rel.Gt,Rel.None,Rel.Gt,Rel.None),
-        List.of(Rel.None,Rel.Eq,Rel.None,Rel.None,Rel.Ls,Rel.Ls,Rel.None),
-        List.of(Rel.None,Rel.Ls,Rel.Eq,Rel.None,Rel.Ls,Rel.Ls,Rel.None),
-        List.of(Rel.None,Rel.None,Rel.None,Rel.Gt,Rel.None,Rel.Gt,Rel.Eq),
-        List.of(Rel.None,Rel.None,Rel.None,Rel.Gt,Rel.None,Rel.Gt,Rel.None)
+        List.of(Rel.None,Rel.None,Rel.None,Rel.None,Rel.None),
+        List.of(Rel.None,Rel.None,Rel.None,Rel.None,Rel.None),
+        List.of(Rel.None,Rel.None,Rel.None,Rel.None,Rel.None),
+        List.of(Rel.Eq,Rel.Ls,Rel.Ls,Rel.Ls,Rel.Ls),
+        List.of(Rel.Eq,Rel.Ls,Rel.Ls,Rel.Ls,Rel.Ls)
     );
 
     private final Map<String, Character> grammar = Map.of(
-        "bBb", 'S',
-        "(G", 'B',
-        "a", 'B',
-        "Ba)", 'G'
+        "A", 'S',
+        "B", 'S',
+        "bS", 'A',
+        "a", 'A',
+        "aS", 'B',
+        "b", 'B'
     );
 
     private int getIndex(Character symbol) throws WrongGrammarException {

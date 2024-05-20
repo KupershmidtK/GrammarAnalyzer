@@ -30,9 +30,13 @@ public class Analyzer {
 
             stack.push(symbol);
         }
-        try { fold(); } catch (WrongGrammarException e) { return false; }
+        try {
+            while (stack.isEmpty() || stack.peek() != 'S') {
+                fold();
+            }
+        } catch (WrongGrammarException e) { return false; }
 
-        return stack.size() == 1 && stack.peek() == 'S';
+        return stack.peek() == 'S';
     }
 
     public void fold() throws WrongGrammarException {
